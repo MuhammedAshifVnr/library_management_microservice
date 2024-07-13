@@ -1,6 +1,6 @@
 package service
 
-import "books-service/internal/repository"
+import "github.com/MuhammedAshifVnr/library_management_microservice/books/internal/repository"
 
 type BooksService interface {
 	CreateBook(title, author string) error

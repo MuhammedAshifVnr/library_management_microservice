@@ -1,9 +1,8 @@
 package handler
 
 import (
-	"books-service/internal/service"
-	pb "books-service/proto"
-
+	"github.com/MuhammedAshifVnr/library_management_microservice/books/internal/service"
+	pb "github.com/MuhammedAshifVnr/library_management_microservice/books/proto"
 	"golang.org/x/net/context"
 )
 
@@ -24,39 +23,39 @@ func (h *BooksHandler) CreateBook(ctx context.Context, req *pb.CreateBookRequest
 	return &pb.CreateBookResponse{Success: true}, nil
 }
 
-func (h *BooksHandler) DeleteBook(ctx context.Context,req *pb.DeleteBookRequest) (*pb.DeleteBookResponse,error){
+func (h *BooksHandler) DeleteBook(ctx context.Context, req *pb.DeleteBookRequest) (*pb.DeleteBookResponse, error) {
 	err := h.service.DeleteBook(req.Id)
-	if err !=nil{
-		return nil,err
+	if err != nil {
+		return nil, err
 	}
-	return &pb.DeleteBookResponse{Success: true},nil
+	return &pb.DeleteBookResponse{Success: true}, nil
 }
 
-func (h *BooksHandler) GetAllBooks(ctx context.Context,req *pb.GetAllBooksRequest) (*pb.GetAllBooksResponse,error){
-	books,err:=h.service.GetAllBooks()
-	if err != nil{
+func (h *BooksHandler) GetAllBooks(ctx context.Context, req *pb.GetAllBooksRequest) (*pb.GetAllBooksResponse, error) {
+	books, err := h.service.GetAllBooks()
+	if err != nil {
 		return nil, err
 	}
 	var pbBooks []*pb.Book
-	for _,book:=range books{
-		pbBooks=append(pbBooks, &pb.Book{
-			Id: book.ID,
-			Title: book.Title,
+	for _, book := range books {
+		pbBooks = append(pbBooks, &pb.Book{
+			Id:     book.ID,
+			Title:  book.Title,
 			Author: book.Author,
 		})
 	}
-	return &pb.GetAllBooksResponse{Books: pbBooks},nil
+	return &pb.GetAllBooksResponse{Books: pbBooks}, nil
 
 }
 
-func (h *BooksHandler) GetBook(ctx context.Context,req *pb.GetBookRequest) (*pb.GetBookResponse,error){
-	book,err:=h.service.GetBook(req.Id)
-	if err != nil{
-		return nil,err
+func (h *BooksHandler) GetBook(ctx context.Context, req *pb.GetBookRequest) (*pb.GetBookResponse, error) {
+	book, err := h.service.GetBook(req.Id)
+	if err != nil {
+		return nil, err
 	}
 	return &pb.GetBookResponse{Book: &pb.Book{
-		Id: book.ID,
-		Title: book.Title,
+		Id:     book.ID,
+		Title:  book.Title,
 		Author: book.Author,
-	}},nil
+	}}, nil
 }

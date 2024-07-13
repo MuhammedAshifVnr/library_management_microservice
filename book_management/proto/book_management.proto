@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package book_management;
+
+option go_package="./proto";
+
+service BookManagementService {
+  rpc CheckOutBook(CheckOutBookRequest) returns (CheckOutBookResponse);
+  rpc CheckInBook(CheckInBookRequest) returns (CheckInBookResponse);
+}
+
+message CheckOutBookRequest {
+  int64 user_id = 1;
+  int64 book_id = 2;
+}
+
+message CheckOutBookResponse {
+  bool success = 1;
+}
+
+message CheckInBookRequest {
+  int64 user_id = 1;
+  int64 book_id = 2;
+}
+
+message CheckInBookResponse {
+  bool success = 1;
+}
