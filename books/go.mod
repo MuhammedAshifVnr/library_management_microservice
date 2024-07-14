@@ -1,4 +1,4 @@
-module github.com/MuhammedAshifVnr/library_management_microservice/books
+module books-service
 
 go 1.22.0
 

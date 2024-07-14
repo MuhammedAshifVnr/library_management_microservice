@@ -1,13 +1,12 @@
 package main
 
 import (
+	"books-service/internal/handler"
+	"books-service/internal/repository"
+	"books-service/internal/service"
+	pb "books-service/proto"
 	"log"
 	"net"
-
-	"github.com/MuhammedAshifVnr/library_management_microservice/books/internal/handler"
-	"github.com/MuhammedAshifVnr/library_management_microservice/books/internal/repository"
-	"github.com/MuhammedAshifVnr/library_management_microservice/books/internal/service"
-	pb "github.com/MuhammedAshifVnr/library_management_microservice/books/proto"
 
 	"google.golang.org/grpc"
 	"gorm.io/driver/postgres"

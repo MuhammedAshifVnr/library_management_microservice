@@ -1,8 +1,9 @@
 package handler
 
 import (
-	"github.com/MuhammedAshifVnr/library_management_microservice/books/internal/service"
-	pb "github.com/MuhammedAshifVnr/library_management_microservice/books/proto"
+	"books-service/internal/service"
+	pb "books-service/proto"
+
 	"golang.org/x/net/context"
 )
 
